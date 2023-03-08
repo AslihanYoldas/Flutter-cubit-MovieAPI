@@ -33,6 +33,8 @@ migrate_working_dir/
 /build/
 
 # Symbolication related
+
+C:\Users\HP\AndroidStudioProjects\flutter_movieapi\lib\Constant.dart
 app.*.symbols
 
 # Obfuscation related
