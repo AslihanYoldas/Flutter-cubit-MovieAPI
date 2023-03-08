@@ -4,7 +4,7 @@ import 'package:flutter_movieapi/view/Home_Page.dart';
 import 'locator.dart';
 
 void main() {
-  setup();
+  DependencyInjection();
   runApp(MaterialApp( home: Home()));
 }
 

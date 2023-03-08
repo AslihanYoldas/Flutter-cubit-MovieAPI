@@ -12,10 +12,13 @@ State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+
+  late AppCubit _viewModel;
   //calling fetchuser from cubit
   @override
   void initState() {
     super.initState();
+    _viewModel = locator.get<AppCubit>();
   }
 
   @override
@@ -33,7 +36,7 @@ class _HomeState extends State<Home> {
             builder: (context, state) {
               debugPrint('STATE = ${state}');
               if (state is InitState) {
-                locator.get<AppCubit>().fetchMovie();
+                _viewModel.fetchMovie();
                 return Center(child: const CircularProgressIndicator());
               }
               else if(state is LoadingState){
