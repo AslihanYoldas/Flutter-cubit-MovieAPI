@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_movieapi/locator.dart';
 import 'package:flutter_movieapi/model/movie.dart';
-import 'package:flutter_movieapi/repository/MovieRepository.dart';
-
 import '../cubit/movie_cubit.dart';
 import '../cubit/movie_states.dart';
 
@@ -22,7 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (c) => AppCubit(MovieRepository()),
+      create: (c) => locator.get<AppCubit>(),
       child: Scaffold(
           appBar:AppBar(
             title:Text('Film Uygulaması'),
@@ -34,8 +33,7 @@ class _HomeState extends State<Home> {
             builder: (context, state) {
               debugPrint('STATE = ${state}');
               if (state is InitState) {
-                final cubit = context.read<AppCubit>();
-                cubit.fetchMovie();
+                locator.get<AppCubit>().fetchMovie();
                 return Center(child: const CircularProgressIndicator());
               }
               else if(state is LoadingState){

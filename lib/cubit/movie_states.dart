@@ -1,5 +1,7 @@
 import 'package:flutter_movieapi/model/movie.dart';
 
+import '../locator.dart';
+
 
 
 abstract class AppState{}
@@ -17,6 +19,6 @@ class ErrorState extends AppState{
 }
 //This state responsible for holding the response
 class ResponseState extends AppState{
-  late final Movie posts;
+  Movie posts=locator<Movie>();
   ResponseState(this.posts);
 }
