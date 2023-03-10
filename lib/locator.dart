@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_movieapi/cubit/movie_cubit.dart';
-import 'package:flutter_movieapi/repository/MovieRepository.dart';
+import 'package:flutter_movieapi/repository/movie_repository.dart';
 import 'package:get_it/get_it.dart';
-import 'Constant.dart';
+import 'constants.dart';
 import 'api/movie_api.dart';
+import 'description_page/description_cubit.dart';
+import 'home_page/home_cubit.dart';
 
 final locator=GetIt.instance;
-
-
 
 class DependencyInjection{
 
@@ -30,6 +29,7 @@ class DependencyInjection{
   }
 
   void provideViewModels(){
-    locator.registerLazySingleton<AppCubit>(() => AppCubit(locator.get<MovieRepository>()));
+    locator.registerLazySingleton<HomeCubit>(() => HomeCubit(locator.get<MovieRepository>()));
+    locator.registerLazySingleton<DescriptionCubit>(() => DescriptionCubit(locator.get<MovieRepository>()));
   }
 }

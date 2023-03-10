@@ -21,7 +21,7 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<Movie> getPost(query) async {
+  Future<Movie> getMovie(query) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
@@ -40,6 +40,29 @@ class _RestClient implements RestClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Movie.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<MovieDetail> getMovieDetail(query) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'tconst': query};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<MovieDetail>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/title/get-overview-details',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = MovieDetail.fromJson(_result.data!);
     return value;
   }
 
