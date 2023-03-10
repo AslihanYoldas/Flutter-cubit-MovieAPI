@@ -16,15 +16,3 @@ abstract class RestClient {
   Future<MovieDetail> getMovieDetail( @Query('tconst') String query);
 
 }
-
-List<Movie> postFromJsonMovie(String str) =>
-    List<Movie>.from(json.decode(str).map((x) => Movie.fromJson(x)));
-
-String postToJsonMovie(List<Movie> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-List<MovieDetail> postFromJsonMovieDetail(String str) =>
-    List<MovieDetail>.from(json.decode(str).map((x) => MovieDetail.fromJson(x)));
-
-String postToJsonMovieDetail(List<MovieDetail> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
