@@ -33,3 +33,5 @@ class DependencyInjection{
     locator.registerLazySingleton<DescriptionCubit>(() => DescriptionCubit(locator.get<MovieRepository>()));
   }
 }
+
+

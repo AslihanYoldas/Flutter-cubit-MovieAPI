@@ -93,10 +93,10 @@ class _HomeState extends State<HomeView> {
                                 '${post.d![index].y}',
                                 style: TextStyle(color: Colors.black54),
                               ),
-                              /*trailing: Text(
+                              trailing: Text(
                             ' ${post.d![index].s}',
                             style: TextStyle(color: Colors.amber),
-                          ),*/
+                          ),
                               leading: Image.network(
                                   "${post.d![index].i?.imageUrl}"),
                             ),
